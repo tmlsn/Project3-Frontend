@@ -1,9 +1,9 @@
-import { createContext, useState } from "react";
-import { client } from "client";
+import { createContext, useState, useEffect } from "react";
+import { client } from "../client";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext()
 
-export function AuthContextProvider({ children }) {
+export function AuthContextProvider({children}) {
   const [user, setUser] = useState(null);
 
   const signup = async (firstName, lastName, email, password) => {
@@ -13,22 +13,15 @@ export function AuthContextProvider({ children }) {
       email,
       password,
     });
-    console.log(response);
-  };
-
-  const login = async (email, password) => {
-    const response = await client.post("/auth/login", {
-      email,
-      password,
-    });
-    console.log(response);
   };
 
   const value = {
     user,
     signup,
-    login,
-  };
+  }
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={value}>
+    {children}
+  </AuthContext.Provider>
+
 }
