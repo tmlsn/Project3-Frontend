@@ -1,4 +1,5 @@
 import styles from './App.module.css';
+import { Signup } from './components';
 import { Navbar } from './components/Navbar';
 import { Home } from './pages';
 
@@ -7,6 +8,7 @@ function App() {
     <div className={styles.textColor}>
       <Navbar />
       <Home />
+      <Signup />
     </div>
   );
 }
