@@ -8,7 +8,6 @@ function App() {
     <div className={styles.textColor}>
       <Navbar />
       <Home />
-      <Signup />
     </div>
   );
 }
