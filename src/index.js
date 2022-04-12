@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Home, NotFound, Profile } from './pages';
+import { Chat, Home, NotFound, Profile } from './pages';
 import { AuthContextProvider } from './context';
 
 import { Login, Signup } from './components';
@@ -21,6 +21,7 @@ ReactDOM.render(
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/chat' element={<Chat />} />
           <Route path='*' element={<NotFound/>} />
 
         </Routes>
