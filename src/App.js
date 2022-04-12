@@ -1,4 +1,5 @@
 import styles from './App.module.css';
+import { Signup } from './components';
 import { Navbar } from './components/Navbar';
 import { Home } from './pages';
 

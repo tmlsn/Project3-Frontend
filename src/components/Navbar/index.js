@@ -1,5 +1,15 @@
 import styles from './Navbar.module.css'
+import { AuthContext } from "../../context";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Navbar() {
-  return <nav>navbar</nav>
+  const navigate = useNavigate();
+  const { signup, login, logout, user } = useContext(AuthContext);
+  
+  return <nav>
+    {!user && <Link to='signup' >Sign up</Link>}
+    {!user && <Link to='login' >Log in</Link>}
+    {user && <button onClick={logout}>Log out</button>}
+  </nav>
 }

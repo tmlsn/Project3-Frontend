@@ -6,16 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Home } from './pages';
 import { AuthContextProvider } from './context';
-import { Login } from "./components";
+
+import { Login, Signup } from './components';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>
         <Routes>
-          <Route path='/' element={<App />}>
-            <Route path='home' element={<Home />} />
-          </Route>
+          <Route path='/' element={<App />}/>
+          <Route path='/home' element={<Home />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
+
         </Routes>
       </AuthContextProvider>
     </BrowserRouter>
