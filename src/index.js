@@ -4,10 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Home, NotFound } from './pages';
+import { Home, NotFound, Profile } from './pages';
 import { AuthContextProvider } from './context';
 
 import { Login, Signup } from './components';
+
 
 
 ReactDOM.render(
@@ -19,6 +20,7 @@ ReactDOM.render(
           <Route path='/home' element={<Home />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/profile' element={<Profile />} />
           <Route path='*' element={<NotFound/>} />
 
         </Routes>

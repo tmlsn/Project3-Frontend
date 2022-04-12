@@ -33,7 +33,7 @@ export function AuthContextProvider({children}) {
       })
       saveToken(response.data.token)
       setUser(response.data.user)
-      navigate('/')
+      navigate('/profile')
     } catch (error) {
       console.log(error)
     }
