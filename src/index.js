@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Home } from './pages';
 import { AuthContextProvider } from './context';
+import { Login } from "./components";
 
 ReactDOM.render(
   <React.StrictMode>
