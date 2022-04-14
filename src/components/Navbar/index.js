@@ -10,6 +10,6 @@ export function Navbar() {
   return <nav>
     {!user && <Link to='signup' >Sign up</Link>}
     {!user && <Link to='login' >Log in</Link>}
-    {user && <button onClick={logout}>Log out</button>}
+    {user && <><Link to='/profile' >Profile</Link> <Link to='/chat' >Chat</Link> <button onClick={logout}>Log out</button></>}
   </nav>
 }
