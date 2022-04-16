@@ -8,7 +8,8 @@ export function Navbar() {
   const { signup, login, logout, user } = useContext(AuthContext);
   console.log(user)
   
-  return <nav>
+  return <nav className={styles.navbar}>
+    <Link to='/' >Home</Link>
     {!user && <Link to='/signup' >Sign up</Link>}
     {!user && <Link to='/login' >Log in</Link>}
     {user && <><Link to='/profile' >Profile</Link> <Link to='/chat' >Chat</Link> <button onClick={logout}>Log out</button></>}

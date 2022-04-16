@@ -1,3 +1,4 @@
+import styles from './Profile.module.css'
 import { Navbar } from '../../components/Navbar';
 
 export function Profile(user) {

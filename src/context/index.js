@@ -25,6 +25,14 @@ export function AuthContextProvider({children}) {
     });
   };
 
+  const signupArtist = async (name, style, location) => {
+    const response = await client.post("/auth/signup-artist", {
+      name,
+      style,
+      location,
+    });
+  };
+
   const login = async (email, password) => {
     try {
       const response = await client.post('/auth/login', {
@@ -49,7 +57,8 @@ export function AuthContextProvider({children}) {
     user,
     signup,
     login,
-    logout
+    logout,
+    signupArtist
   }
 
   return <AuthContext.Provider value={value}>

@@ -1,8 +1,6 @@
 import styles from './Concerts.module.css'
 import { useEffect, useState } from "react";
 import axios from "axios"
-// const dotenv = require('dotenv')
-// dotenv.config()
 
 export function Concerts() {
   const [concerts, setConcerts] = useState([])
@@ -21,8 +19,7 @@ export function Concerts() {
         return (
           <div key={concert.id}>
           <p >{concert.name}</p>
-          <img src={concert.images[0].url} />
-
+          <img src={concert.images[0].url} style={{width: 100}} />
 
           </div>
         )

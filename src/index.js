@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Chat, Home, NotFound, Profile } from './pages';
 import { AuthContextProvider } from './context';
 
-import { Login, Signup } from './components';
+import { Login, Signup, SignupFlow } from './components';
 
 
 
@@ -16,11 +16,11 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthContextProvider>
         <Routes>
-          <Route path='/' element={<App />}/>
-          <Route path='/home' element={<Home />} />
+          <Route path='/' element={<Home />}/>
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/signup-details' element={<SignupFlow />} />
           <Route path='/chat' element={<Chat />} />
           <Route path='*' element={<NotFound/>} />
 

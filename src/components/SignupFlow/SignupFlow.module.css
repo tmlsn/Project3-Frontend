@@ -1,0 +1,10 @@
+.suFlowSelectors {
+  display: flex;
+  gap: 10px
+}
+
+.profileForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
