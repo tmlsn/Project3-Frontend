@@ -6,7 +6,7 @@ import axios from "axios"
 
 export function Concerts() {
   const [concerts, setConcerts] = useState([])
-  let apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?locale=es&apikey=${process.env.REACT_APP_TM_CONSUMER_KEY}`
+  let apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=barcelona&apikey=${process.env.REACT_APP_TM_CONSUMER_KEY}`
   useEffect(() => {
     axios.get(apiUrl)
       .then((response) => {
@@ -16,8 +16,16 @@ export function Concerts() {
 
   return (
     <div>
+      <p>Upcoming shows in Spain</p>
       {concerts.map((concert) => {
-        return <p key={concert.id}>{concert.name}</p>
+        return (
+          <div key={concert.id}>
+          <p >{concert.name}</p>
+          <img src={concert.images[0].url} />
+
+
+          </div>
+        )
       })}
     </div>
   )

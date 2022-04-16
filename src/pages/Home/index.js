@@ -1,8 +1,10 @@
-import { Concerts } from '../../components'
+import { Concerts, Navbar } from '../../components'
 import styles from './Home.module.css'
 
 export function Home() {
-  return <div>Home
+  return <div>
+    <Navbar />
+    Home
     <Concerts />
   </div>
 }
