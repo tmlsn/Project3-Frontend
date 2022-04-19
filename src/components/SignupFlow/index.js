@@ -33,7 +33,9 @@ export function SignupFlow() {
     
   const handleSubmitVenue = (e) => {
     e.preventDefault()
-    signupVenue({name: venueName, capacity: capacity, style: venueStyle, location: venueLocation})
+    //signupVenue({name: venueName, capacity: capacity, style: venueStyle, location: venueLocation})
+    console.log(typeof capacity)
+    signupVenue(venueName, venueStyle, venueLocation, capacity)
     navigate('/profile')
   }
 
@@ -135,7 +137,7 @@ export function SignupFlow() {
               type="number"
               value={capacity}
               onChange={(e) => {
-                setCapacity(e.target.value);
+                setCapacity(parseInt(e.target.value));
               }}
             />
             <button>Save</button>

@@ -60,9 +60,9 @@ export function AuthContextProvider({children}) {
     try {
       const response = await client.get("/auth/verify")
       setUser(response.data.user)
-      navigate('/profile')
+      //navigate('/profile')
     } catch(error) {
-      navigate('/')
+      //navigate('/')
     }
   }
 
