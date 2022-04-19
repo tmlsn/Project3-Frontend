@@ -33,10 +33,10 @@ export function AuthContextProvider({children}) {
     });
   };
 
-  const signupVenue = async (name, style, location, capacity) => {
+  const signupVenue = async (name, description, location, capacity) => {
     const response = await client.post("/auth/signup-venue", {
       name,
-      style,
+      description,
       location,
       capacity
     });
@@ -62,7 +62,7 @@ export function AuthContextProvider({children}) {
       setUser(response.data.user)
       //navigate('/profile')
     } catch(error) {
-      //navigate('/')
+      navigate('/login')
     }
   }
 

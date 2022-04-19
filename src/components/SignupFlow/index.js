@@ -21,7 +21,7 @@ export function SignupFlow() {
 
   //variables for venue
   const [venueName, setVenueName] = useState("");
-  const [venueStyle, setVenueStyle] = useState("");
+  const [description, setDescription] = useState("");
   const [venueLocation, setVenueLocation] = useState("")
   const [capacity, setCapacity] = useState("")
   
@@ -33,9 +33,7 @@ export function SignupFlow() {
     
   const handleSubmitVenue = (e) => {
     e.preventDefault()
-    //signupVenue({name: venueName, capacity: capacity, style: venueStyle, location: venueLocation})
-    console.log(typeof capacity)
-    signupVenue(venueName, venueStyle, venueLocation, capacity)
+    signupVenue(venueName, description, venueLocation, capacity)
     navigate('/profile')
   }
 
@@ -115,12 +113,12 @@ export function SignupFlow() {
                 setVenueName(e.target.value);
               }}
             />
-            <label htmlFor="venueStyle">What kind of venue are you?</label>
-            <input
-              id="venueStyle"
-              value={venueStyle}
+            <label htmlFor="description">What kind of venue are you?</label>
+            <textarea
+              id="description"
+              value={description}
               onChange={(e) => {
-                setVenueStyle(e.target.value);
+                setDescription(e.target.value);
               }}
             />
             <label htmlFor="venueLocation">Where's the venue located</label>
