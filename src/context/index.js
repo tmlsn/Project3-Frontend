@@ -56,11 +56,25 @@ export function AuthContextProvider({children}) {
     }
   }
 
+  const verify = async () => {
+    try {
+      const response = await client.get("/auth/verify")
+      setUser(response.data.user)
+      navigate('/profile')
+    } catch(error) {
+      navigate('/')
+    }
+  }
+
   const logout = () => {
     deleteToken();
     setUser(null);
     navigate("/");
   };
+
+  useEffect(() => {
+    verify()
+  }, [])
 
   const value = {
     user,
