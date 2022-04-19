@@ -5,7 +5,7 @@ import { useState, useContext } from 'react';
 import { AuthContext } from "../../context";
 
 export function SignupFlow() {
-  const { signupArtist } = useContext(AuthContext);
+  const { signupArtist, signupVenue } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [isArtist, setIsArtist] = useState(undefined)
@@ -18,6 +18,12 @@ export function SignupFlow() {
   const [singer, setSinger] = useState(false)
   const [instruments, setInstruments] = useState("")
   const [location, setLocation] = useState("")
+
+  //variables for venue
+  const [venueName, setVenueName] = useState("");
+  const [venueStyle, setVenueStyle] = useState("");
+  const [venueLocation, setVenueLocation] = useState("")
+  const [capacity, setCapacity] = useState("")
   
   const handleSubmitArtist = (e) => {
     e.preventDefault()
@@ -25,8 +31,10 @@ export function SignupFlow() {
     navigate('/profile')
   }
     
-  const handleSubmitVenue = () => {
-
+  const handleSubmitVenue = (e) => {
+    e.preventDefault()
+    signupVenue({name: venueName, capacity: capacity, style: venueStyle, location: venueLocation})
+    navigate('/profile')
   }
 
   return (
@@ -96,6 +104,42 @@ export function SignupFlow() {
 
         </div> : 
         <div>
+          <form onSubmit={handleSubmitVenue} className={styles.profileForm}>
+            <label htmlFor="venueName">What's the name of your venue?</label>
+            <input
+              id="venueName"
+              value={venueName}
+              onChange={(e) => {
+                setVenueName(e.target.value);
+              }}
+            />
+            <label htmlFor="venueStyle">What kind of venue are you?</label>
+            <input
+              id="venueStyle"
+              value={venueStyle}
+              onChange={(e) => {
+                setVenueStyle(e.target.value);
+              }}
+            />
+            <label htmlFor="venueLocation">Where's the venue located</label>
+            <input
+              id="venueLocation"
+              value={venueLocation}
+              onChange={(e) => {
+                setVenueLocation(e.target.value);
+              }}
+            />
+            <label htmlFor="capacity">How many people can you host at a time?</label>
+            <input
+              id="capacity"
+              type="number"
+              value={capacity}
+              onChange={(e) => {
+                setCapacity(e.target.value);
+              }}
+            />
+            <button>Save</button>
+          </form>
 
         </div>
       }
