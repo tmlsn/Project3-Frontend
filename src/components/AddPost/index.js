@@ -4,13 +4,16 @@ import { useState, useContext } from "react";
 
 export function AddPost() {
     
-    const { addPost } = useContext(AuthContext);
+    const { addPost, allPosts } = useContext(AuthContext);
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addPost(title, content);
+    allPosts()
+    setTitle('')
+    setContent('')
   };
     
     return <div>
