@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 
 export function AddPost() {
     
-    const { addPost, allPosts } = useContext(AuthContext);
+    const { addPost, allPosts, user } = useContext(AuthContext);
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
@@ -17,6 +17,7 @@ export function AddPost() {
   };
     
     return <div>
+    {user ? (
         <form onSubmit={handleSubmit}>
         <h2>Create a Post</h2>
         <label htmlFor="title">Title:</label>
@@ -39,5 +40,8 @@ export function AddPost() {
         />
         <button>Create</button>
         </form>
+        ) : (
+          <h2>Create an account or log in to share a post!</h2>
+        )} 
     </div>
   }
