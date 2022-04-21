@@ -6,8 +6,8 @@ export function Home() {
     <Navbar />
     Home
     <div className={styles.body}>
-    <div className='concertContainer'><Concerts /></div>
-    <div className='addPostContainer'><AddPost /></div>
+      <div className='concertContainer'><Concerts /></div>
+      <div className='addPostContainer'><AddPost /></div>
     </div>
   </div>
 }
