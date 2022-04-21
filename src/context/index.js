@@ -77,6 +77,13 @@ export function AuthContextProvider({children}) {
     }
   }
 
+  const addPost = async (title, content) => {
+    const response = await client.post("/post/create-post", {
+      title,
+      content,
+    });
+  }
+
   const verify = async () => {
     try {
       const response = await client.get("/auth/verify")
@@ -103,7 +110,8 @@ export function AuthContextProvider({children}) {
     login,
     logout,
     signupArtist, 
-    signupVenue
+    signupVenue,
+    addPost
   }
 
   return <AuthContext.Provider value={value}>
