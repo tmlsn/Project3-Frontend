@@ -1,12 +1,33 @@
 import { createContext, useState, useEffect } from "react";
 import { client } from "../client";
 import { Navigate, useNavigate } from "react-router-dom";
+import { GeoHash } from "geohash";
 
 export const AuthContext = createContext()
 
 export function AuthContextProvider({children}) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+
+  let latitude
+  let longitude
+
+  if ('geolocation' in navigator ) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+  
+      console.log('lat: ' + latitude); 
+      console.log('lon: ' + longitude);
+      
+      let geohash = GeoHash.encodeGeoHash(latitude, longitude)
+      console.log(geohash)
+
+    });
+  } else {
+    console.log('NOT AVAILABLE')
+  }
+
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
