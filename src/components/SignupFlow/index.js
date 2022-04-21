@@ -37,6 +37,10 @@ export function SignupFlow() {
     navigate('/profile')
   }
 
+  const handleAddMember = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <div>
       <Navbar />
@@ -66,7 +70,18 @@ export function SignupFlow() {
               setStyle(e.target.value);
             }}
           />
+          <label htmlFor="location">Where is the band located?</label>
+          <input
+            id="location"
+            type="location"
+            value={location}
+            onChange={(e) => {
+              setLocation(e.target.value);
+            }}
+          />
           <label htmlFor="memberName">Who's in the band?</label>
+
+          <label htmlFor="memberName">Name</label>
           <input
             id="memberName"
             value={memberName}
@@ -90,15 +105,7 @@ export function SignupFlow() {
               setInstruments(e.target.value);
             }}
           />
-          <label htmlFor="location">Where is the band located?</label>
-          <input
-            id="location"
-            type="location"
-            value={location}
-            onChange={(e) => {
-              setLocation(e.target.value);
-            }}
-          />
+          <button onClick={handleAddMember}>Add member</button>
           <button>Save</button>
           </form>
 
