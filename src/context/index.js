@@ -96,9 +96,11 @@ export function AuthContextProvider({children}) {
     }
   }
 
-  const deletePost = async () => {
+  const deletePost = async (id) => {
+    console.log('asterixqfsfddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd')
     try {
-      const response = await client.delete("/post/delete-posts")
+      const response = await client.delete(`/post/${id}`)
+      allPosts()
     } catch (error) {
       console.log(error)
     }
