@@ -1,4 +1,4 @@
-import { Concerts, Navbar, AddPost } from '../../components'
+import { Concerts, Navbar, AddPost, AllPosts } from '../../components'
 import styles from './Home.module.css'
 
 export function Home() {
@@ -6,8 +6,9 @@ export function Home() {
     <Navbar />
     Home
     <div className={styles.body}>
-      <div className='concertContainer'><Concerts /></div>
-      <div className='addPostContainer'><AddPost /></div>
+    <div className='concertContainer'><Concerts /></div>
+    <div className='postsContainer'><AddPost /></div>
+    <AllPosts/>
     </div>
   </div>
 }

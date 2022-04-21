@@ -8,6 +8,7 @@ export const AuthContext = createContext()
 export function AuthContextProvider({children}) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [posts, setPosts] = useState([])
 
   let latitude
   let longitude
@@ -84,6 +85,25 @@ export function AuthContextProvider({children}) {
     });
   }
 
+  const allPosts = async () => {
+    try {
+      const response = await client.get("/post/all-posts")
+      setPosts(response.data)
+      
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const deletePost = async () => {
+    try {
+      const response = await client.delete("/post/delete-posts")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const verify = async () => {
     try {
       const response = await client.get("/auth/verify")
@@ -111,7 +131,10 @@ export function AuthContextProvider({children}) {
     logout,
     signupArtist, 
     signupVenue,
-    addPost
+    addPost,
+    allPosts,
+    deletePost,
+    posts
   }
 
   return <AuthContext.Provider value={value}>
