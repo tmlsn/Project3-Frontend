@@ -11,7 +11,7 @@ export function AddPost() {
   const handleSubmit = (e) => {
     e.preventDefault();
     addPost(title, content);
-    allPosts()
+    /* allPosts() */
     setTitle('')
     setContent('')
   };
