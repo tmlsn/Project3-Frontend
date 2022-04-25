@@ -9,26 +9,32 @@ export function AuthContextProvider({children}) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState([])
+  const [concerts, setConcerts] = useState([])
+  const [geohash, setGeohash] = useState('')
 
-  let latitude
-  let longitude
-
-  if ('geolocation' in navigator ) {
+  useEffect(() => {
+    if ('geolocation' in navigator ) {
       navigator.geolocation.getCurrentPosition(function(position) {
-      latitude = position.coords.latitude;
-      longitude = position.coords.longitude;
-  
-      console.log('lat: ' + latitude); 
-      console.log('lon: ' + longitude);
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
       
-      let geohash = GeoHash.encodeGeoHash(latitude, longitude)
-      console.log(geohash)
-
+      let hash = GeoHash.encodeGeoHash(latitude, longitude).slice(0, 6)
+      setGeohash(hash)
     });
   } else {
-    console.log('NOT AVAILABLE')
+    console.log('Geolocation is not available')
   }
+  }, [geohash])
 
+  const getConcerts = async (geohash) => {
+    try {
+      const response = await client.get(`/concert/${geohash}`)
+      setConcerts(response.data.events)
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
@@ -97,7 +103,6 @@ export function AuthContextProvider({children}) {
   }
 
   const deletePost = async (id) => {
-    console.log('asterixqfsfddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd')
     try {
       const response = await client.delete(`/post/${id}`)
       allPosts()
@@ -136,7 +141,11 @@ export function AuthContextProvider({children}) {
     addPost,
     allPosts,
     deletePost,
-    posts
+    posts, 
+    getConcerts,
+    concerts,
+    geohash,
+    
   }
 
   return <AuthContext.Provider value={value}>
