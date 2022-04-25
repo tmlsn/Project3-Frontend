@@ -11,6 +11,7 @@ export function AuthContextProvider({children}) {
   const [posts, setPosts] = useState([])
   const [concerts, setConcerts] = useState([])
   const [geohash, setGeohash] = useState('')
+  const [liked, setLiked] = useState(false)
 
   useEffect(() => {
     if ('geolocation' in navigator ) {
@@ -84,11 +85,10 @@ export function AuthContextProvider({children}) {
     }
   }
 
-  const addPost = async (title, content) => {
-    const response = await client.post("/post/create-post", {
-      title,
-      content,
-    });
+  
+
+  const findPost = async (id) => {
+    const response = await client.get(`/post/${id}`)
   }
 
   const allPosts = async () => {
@@ -102,13 +102,55 @@ export function AuthContextProvider({children}) {
     }
   }
 
+  const addPost = async (title, content) => {
+    const response = await client.post("/post/create-post", {
+      title,
+      content,
+    });
+    allPosts()
+  }
+
   const deletePost = async (id) => {
     try {
-      const response = await client.delete(`/post/${id}`)
+      const response = await client.delete(`/post/delete-post/${id}`)
       allPosts()
     } catch (error) {
       console.log(error)
     }
+  }
+
+  /* const handleLiked = () => {
+    setLiked((previousValue) => {
+        return !previousValue
+    });
+} */
+
+  /* const likePost = async (id) => {
+    console.log('asterixqfsfddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd')
+    try {
+      const response = await client.put(`/post/like-post/${id}`)
+       allPosts()  
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+   const unlikePost = async (id) => {
+    console.log('asterixqfsfddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd')
+    try {
+      const response = await client.put(`/post/unlike-post/${id}`)
+       allPosts()  
+    } catch (error) {
+      console.log(error)
+    }
+  }  */
+
+  const editPost = async (title, content, id) => {
+    const response = await client.put(`/post/edit-post/${id}`, {
+      title,
+      content,
+    });
+    allPosts()
   }
 
   const verify = async () => {
@@ -139,12 +181,16 @@ export function AuthContextProvider({children}) {
     signupArtist, 
     signupVenue,
     addPost,
+    findPost,
     allPosts,
     deletePost,
     posts, 
     getConcerts,
     concerts,
     geohash,
+    editPost,
+    /* likePost,
+    unlikePost, */
     
   }
 
