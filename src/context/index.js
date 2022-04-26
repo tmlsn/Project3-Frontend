@@ -10,26 +10,33 @@ export function AuthContextProvider({children}) {
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState([]);
   const [liked, setLiked] = useState(false)
-
-  let latitude
-  let longitude
-
-  if ('geolocation' in navigator ) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-      latitude = position.coords.latitude;
-      longitude = position.coords.longitude;
   
-      console.log('lat: ' + latitude); 
-      console.log('lon: ' + longitude);
-      
-      let geohash = GeoHash.encodeGeoHash(latitude, longitude)
-      console.log(geohash)
+  const [concerts, setConcerts] = useState([])
+  const [geohash, setGeohash] = useState('')
 
+  useEffect(() => {
+    if ('geolocation' in navigator ) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      
+      let hash = GeoHash.encodeGeoHash(latitude, longitude).slice(0, 6)
+      setGeohash(hash)
     });
   } else {
-    console.log('NOT AVAILABLE')
+    console.log('Geolocation is not available')
   }
+  }, [geohash])
 
+  const getConcerts = async (geohash) => {
+    try {
+      const response = await client.get(`/concert/${geohash}`)
+      setConcerts(response.data.events)
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
@@ -105,7 +112,6 @@ export function AuthContextProvider({children}) {
   }
 
   const deletePost = async (id) => {
-    console.log('asterixqfsfddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd')
     try {
       const response = await client.delete(`/post/delete-post/${id}`)
       allPosts()
@@ -182,7 +188,10 @@ export function AuthContextProvider({children}) {
     posts,
     editPost,
     /* likePost,
-    unlikePost, */
+    unlikePost, */ 
+    getConcerts,
+    concerts,
+    geohash,
     
   }
 
