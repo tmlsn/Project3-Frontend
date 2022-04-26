@@ -173,6 +173,13 @@ export function AuthContextProvider({children}) {
     }
   }
 
+  const editComment = async (content, id) => {
+    const response = await client.put(`/comment/edit-comment/${id}`, {
+      content,
+    });
+    seeComments()
+  }
+
   const verify = async () => {
     try {
       const response = await client.get("/auth/verify")
@@ -208,6 +215,7 @@ export function AuthContextProvider({children}) {
     editPost,
     addComment,
     seeComments,
+    editComment,
     /* likePost,
     unlikePost, */ 
     getConcerts,
