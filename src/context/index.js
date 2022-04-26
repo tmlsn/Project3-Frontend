@@ -10,7 +10,7 @@ export function AuthContextProvider({children}) {
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState([]);
   const [liked, setLiked] = useState(false)
-  
+  const [comments, setComments] = useState([]);
   const [concerts, setConcerts] = useState([])
   const [geohash, setGeohash] = useState('')
 
@@ -154,6 +154,25 @@ export function AuthContextProvider({children}) {
     allPosts()
   }
 
+  const addComment = async (content, post) => {
+    
+    const response = await client.post(`/comment/add-comment/${post._id}`, {
+      content,
+      post
+    });
+  }
+
+  const seeComments = async (post) => {
+    try {
+      const response = await client.get(`/comment/see-comment/${post._id}`)
+      setComments(response.data)
+      
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const verify = async () => {
     try {
       const response = await client.get("/auth/verify")
@@ -187,6 +206,8 @@ export function AuthContextProvider({children}) {
     deletePost,
     posts,
     editPost,
+    addComment,
+    seeComments,
     /* likePost,
     unlikePost, */ 
     getConcerts,

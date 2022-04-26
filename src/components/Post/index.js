@@ -1,5 +1,6 @@
 import { AuthContext } from "../../context";
 import { useState, useContext, useEffect } from "react";
+import { AddComment } from "../AddComment";
 
 export function Post(post) {
     const [title, setTitle] = useState(post.title);
@@ -7,6 +8,7 @@ export function Post(post) {
     const { deletePost, user, allPosts, likePost, unlikePost, findPost, editPost } = useContext(AuthContext);
     const [editing, setEditing] = useState(false)
     const [options, setOptions] = useState(false)
+    
 
     const handleDelete = () => {
         console.log(post.user, user._id)
@@ -35,6 +37,9 @@ export function Post(post) {
             handleEditing();
         }  
     }
+
+    
+    
     
 
      /* const handleLike = (post) => {
@@ -67,7 +72,6 @@ export function Post(post) {
                 {user._id === post.user ? (
                     <button onClick={handleEditing}>Edit</button>
                 ):(null)}
-                <button onClick={handleOptions} >Hide options</button>
                 </div>
                 )}
                 </div> ):(
@@ -92,6 +96,7 @@ export function Post(post) {
                     <button onClick={handleSave}>Save</button>
                     </div>
                 )}
+                <AddComment {...post} />
             </div>
         
 }
