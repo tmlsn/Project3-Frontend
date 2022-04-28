@@ -5,17 +5,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from '../Navbar';
 
 export function Signup() {
-  const { signup } = useContext(AuthContext);
+  const { signup, login } = useContext(AuthContext);
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [details, setDetails] = useState(false)
+  console.log(details)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(firstName, lastName, email, password);
-    navigate('/signup-details')
+    signup(firstName, lastName, email, password, details);
+    navigate('/login')
   };
 
   return (

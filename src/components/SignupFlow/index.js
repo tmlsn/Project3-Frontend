@@ -1,46 +1,46 @@
 import styles from './SignupFlow.module.css'
 import { Navbar } from '../Navbar'
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from "../../context";
 
 export function SignupFlow() {
-  const { signupArtist, signupVenue } = useContext(AuthContext);
+  const { signupArtist, signupVenue, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [isArtist, setIsArtist] = useState(undefined)
+  //const [details, setDetails] = useState(false)
 
   //variables for artist
   const [name, setName] = useState("");
   const [style, setStyle] = useState("");
-  const [members, setMembers] = useState("");
-  const [memberName, setMemberName] = useState("")
-  const [singer, setSinger] = useState(false)
-  const [instruments, setInstruments] = useState("")
+  const [artistDescription, setArtistDescription] = useState("");
+  const [artistContactInfo, setArtistContactInfo] = useState("");
   const [location, setLocation] = useState("")
 
   //variables for venue
   const [venueName, setVenueName] = useState("");
   const [description, setDescription] = useState("");
   const [venueLocation, setVenueLocation] = useState("")
+  const [contactInfo, setContactInfo] = useState("")
   const [capacity, setCapacity] = useState("")
   
   const handleSubmitArtist = (e) => {
     e.preventDefault()
-    signupArtist(name, style, location)
+    signupArtist(name, style, artistDescription, artistContactInfo, location)
     navigate('/profile')
   }
     
   const handleSubmitVenue = (e) => {
     e.preventDefault()
-    signupVenue(venueName, description, venueLocation, capacity)
+    signupVenue(venueName, description, venueLocation, contactInfo, capacity)
     navigate('/profile')
   }
 
   const handleAddMember = (e) => {
     e.preventDefault()
   }
-
+  
   return (
     <div>
       <Navbar />
@@ -51,7 +51,7 @@ export function SignupFlow() {
       </div>
 
       {
-        isArtist ? 
+        isArtist  ? 
         <div >
           <form onSubmit={handleSubmitArtist} className={styles.profileForm}>
           <label htmlFor="name">What's the name of your band?</label>
@@ -70,7 +70,7 @@ export function SignupFlow() {
               setStyle(e.target.value);
             }}
           />
-          <label htmlFor="location">Where is the band located?</label>
+          <label htmlFor="location">Where are you located?</label>
           <input
             id="location"
             type="location"
@@ -79,33 +79,22 @@ export function SignupFlow() {
               setLocation(e.target.value);
             }}
           />
-          <label htmlFor="memberName">Who's in the band?</label>
-
-          <label htmlFor="memberName">Name</label>
+          <label htmlFor="artistDescription">Who's in the band?</label>
           <input
-            id="memberName"
-            value={memberName}
+            id="artistDescription"
+            value={artistDescription}
             onChange={(e) => {
-              setMemberName(e.target.value);
+              setArtistDescription(e.target.value);
             }}
           />
-          <label htmlFor="singer">Do they do vocals?</label>
+          <label htmlFor="artistContactInfo">How can venues contact you?</label>
           <input
-            id="singer"
-            value={singer}
+            id="artistContactInfo"
+            value={artistContactInfo}
             onChange={(e) => {
-              setSinger(e.target.value);
+              setArtistContactInfo(e.target.value);
             }}
           />
-          <label htmlFor="instruments">What instrument(s) do they play?</label>
-          <input
-            id="instruments"
-            value={instruments}
-            onChange={(e) => {
-              setInstruments(e.target.value);
-            }}
-          />
-          <button onClick={handleAddMember}>Add member</button>
           <button>Save</button>
           </form>
 
@@ -134,6 +123,14 @@ export function SignupFlow() {
               value={venueLocation}
               onChange={(e) => {
                 setVenueLocation(e.target.value);
+              }}
+            />
+            <label htmlFor="contactInfo">How can artists contact you?</label>
+            <input
+              id="contactInfo"
+              value={contactInfo}
+              onChange={(e) => {
+                setContactInfo(e.target.value);
               }}
             />
             <label htmlFor="capacity">How many people can you host at a time?</label>

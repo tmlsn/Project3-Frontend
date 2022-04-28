@@ -2,8 +2,10 @@ import styles from './Login.module.css'
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context";
 import { Navbar } from '../Navbar';
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
+  const navigate = useNavigate();
   const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,6 +13,7 @@ export function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password);
+    navigate('/signup-details')
   };
 
   return (
