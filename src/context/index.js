@@ -166,6 +166,7 @@ export function AuthContextProvider({children}) {
       content,
       post
     });
+    seeComments(post)
   }
 
   const seeComments = async (post) => {

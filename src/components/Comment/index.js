@@ -47,7 +47,7 @@ export function Comment(comment) {
             <button onClick={handleEditing}>Close</button>
             </div>
         )}
-        <span>{comment.content}</span>
+        
         <div>
             {user._id === comment.user ? (
                 <button onClick={handleOptions}>...</button>
