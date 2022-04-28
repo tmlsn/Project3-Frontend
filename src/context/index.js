@@ -170,9 +170,9 @@ export function AuthContextProvider({children}) {
 
   const seeComments = async (post) => {
     try {
-      const response = await client.get(`/comment/see-comment/${post._id}`)
+      const response = await client.get(`/comment/see-comments/${post._id}`)
       setComments(response.data)
-      
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',response.data)
       
     } catch (error) {
       console.log(error)
@@ -221,6 +221,7 @@ export function AuthContextProvider({children}) {
     editPost,
     addComment,
     seeComments,
+    comments,
     editComment,
     /* likePost,
     unlikePost, */ 

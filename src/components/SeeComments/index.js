@@ -3,12 +3,13 @@ import { useState, useContext, useEffect } from "react";
 import { Comment } from "../Comment";
 
 export function SeeComments(post) {
-    const { seeComments } = useContext(AuthContext);
+    const { seeComments, comments } = useContext(AuthContext);
     
-    const comments = useEffect(() => {
+    useEffect(() => {
         seeComments(post)
     },[])
-    console.log(comments)
+    console.log('cccccccccccccccccccccccccccccccc', post)
+    console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',comments)
 
     return <div>
         {comments.map((comment) => {
