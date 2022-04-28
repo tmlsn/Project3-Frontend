@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from "react";
 
 export function Comment(comment) {
     const [content, setContent] = useState(comment.content);
-    const { user, seeComments,  editComment } = useContext(AuthContext);
+    const { user, seeComments,  editComment, deleteComment } = useContext(AuthContext);
     const [editing, setEditing] = useState(false)
     const [options, setOptions] = useState(false)
 
@@ -24,10 +24,20 @@ export function Comment(comment) {
     const handleSave = () => {
         
         if(comment.user === user._id){
-            editComment(content, comment._id)
+            editComment(content, comment)
             handleEditing();
         }  
     }
+
+    const handleDelete = () => {
+        if(comment.user === user._id){
+            deleteComment(comment)
+            
+        }
+
+    }
+
+
 
     return (
         <div>
@@ -36,8 +46,8 @@ export function Comment(comment) {
         ):(
             <div>
             <input
-                id="content"
-                type="content"
+                id="comment-content"
+                type="comment-content"
                 value={content}
                 onChange={(e) => {
                 setContent(e.target.value);
@@ -55,7 +65,7 @@ export function Comment(comment) {
             {options ? ( 
                     <div>
                     <button onClick={handleEditing}>Edit</button>
-                    <button>Delete</button>
+                    <button onClick={handleDelete}>Delete</button>
                     </div>
                 ):(null)}
             </div>

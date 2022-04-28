@@ -164,27 +164,37 @@ export function AuthContextProvider({children}) {
     
     const response = await client.post(`/comment/add-comment/${post._id}`, {
       content,
-      post
+
     });
-    seeComments(post)
+    seeComments(post._id)
   }
 
-  const seeComments = async (post) => {
+  const seeComments = async (postId) => {
     try {
-      const response = await client.get(`/comment/see-comments/${post._id}`)
+      const response = await client.get(`/comment/see-comments/${postId}`)
       setComments(response.data)
-      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',response.data)
+      
       
     } catch (error) {
       console.log(error)
     }
   }
 
-  const editComment = async (content, id) => {
-    const response = await client.put(`/comment/edit-comment/${id}`, {
+  const editComment = async (content, comment) => {
+    const response = await client.put(`/comment/edit-comment/${comment._id}`, {
       content,
     });
-    seeComments()
+    seeComments(comment.post)
+  }
+
+  const deleteComment = async (comment) => {
+    try {
+      const response = await client.delete(`/comment/delete-comment/${comment._id}`)
+      console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', comment.post)
+      seeComments(comment.post)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const verify = async () => {
@@ -224,6 +234,7 @@ export function AuthContextProvider({children}) {
     seeComments,
     comments,
     editComment,
+    deleteComment,
     /* likePost,
     unlikePost, */ 
     getConcerts,
