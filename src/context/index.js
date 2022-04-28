@@ -45,28 +45,32 @@ export function AuthContextProvider({children}) {
     localStorage.removeItem("token");
   };
 
-  const signup = async (firstName, lastName, email, password) => {
+  const signup = async (firstName, lastName, email, password, details) => {
     const response = await client.post("/auth/signup", {
       firstName,
       lastName,
       email,
       password,
+      details
     });
   };
 
-  const signupArtist = async (name, style, location) => {
+  const signupArtist = async (name, style, description, contactInfo, location) => {
     const response = await client.post("/auth/signup-artist", {
       name,
       style,
+      description,
+      contactInfo,
       location,
     });
   };
 
-  const signupVenue = async (name, description, location, capacity) => {
+  const signupVenue = async (name, description, location, contactInfo, capacity) => {
     const response = await client.post("/auth/signup-venue", {
       name,
       description,
       location,
+      contactInfo,
       capacity
     });
   };
@@ -79,7 +83,6 @@ export function AuthContextProvider({children}) {
       })
       saveToken(response.data.token)
       setUser(response.data.user)
-      navigate('/profile')
     } catch (error) {
       console.log(error)
     }
