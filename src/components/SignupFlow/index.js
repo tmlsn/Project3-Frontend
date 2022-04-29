@@ -28,13 +28,13 @@ export function SignupFlow() {
   const handleSubmitArtist = (e) => {
     e.preventDefault()
     signupArtist(name, style, artistDescription, artistContactInfo, location)
-    navigate('/login')
+    navigate('/')
   }
     
   const handleSubmitVenue = (e) => {
     e.preventDefault()
     signupVenue(venueName, description, venueLocation, contactInfo, capacity)
-    navigate('/login')
+    navigate('/')
   }
   
   return (

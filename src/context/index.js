@@ -100,10 +100,32 @@ export function AuthContextProvider({children}) {
       if (response.data !== null) setArtRes(true)
   }
 
+  const editArtist = async (name, location, style, description, contactInfo, id) => {
+    const response = await client.put(`/profile/artist/edit/${id}`, {
+      name, 
+      location, 
+      style, 
+      description,
+      contactInfo
+    });
+    getArtistInfo()
+  }
+
   const getVenueInfo = async (id) => {
     const response = await client.get(`/profile/venue/${id}`)
     setVenue(response.data)
     if (response.data !== null) setVenRes(true)
+  }
+
+  const editVenue = async (name, location, description, contactInfo, capacity, id) => {
+    const response = await client.put(`/profile/artist/edit/${id}`, {
+      name, 
+      location, 
+      description,
+      contactInfo,
+      capacity
+    });
+    getVenueInfo()
   }
   
 
@@ -259,6 +281,8 @@ export function AuthContextProvider({children}) {
     artist,
     venRes,
     artRes,
+    editArtist,
+    editVenue,
     /* likePost,
     unlikePost, */
 

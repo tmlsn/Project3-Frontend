@@ -13,7 +13,7 @@ export function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password);
-    navigate('/')
+    navigate('/signup-details')
   };
 
   return (
