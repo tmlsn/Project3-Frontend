@@ -17,7 +17,8 @@ export function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(firstName, lastName, email, password, details);
-    navigate('/login')
+    navigate('/signup-details')
+    
   };
 
   return (

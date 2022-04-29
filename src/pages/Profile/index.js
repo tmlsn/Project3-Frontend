@@ -5,10 +5,9 @@ import { ProfileInfo } from '../../components';
 
 export function Profile(user) {
     return (
-    <>
-      <div><Navbar /></div>
+    <div>
+      <Navbar />
       <ProfileInfo />
-      <div>this is your profile page</div>
-    </>
+    </div>
     )
   }

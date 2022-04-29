@@ -13,9 +13,11 @@ export function AuthContextProvider({children}) {
   const [comments, setComments] = useState([]);
   const [concerts, setConcerts] = useState([])
   const [geohash, setGeohash] = useState('')
+  const [venue, setVenue] = useState('')
+  const [venRes, setVenRes] = useState(false)
+  const [artist, setArtist] = useState('')
+  const [artRes, setArtRes] = useState(false)
  
-  
-  
 
   useEffect(() => {
     if ('geolocation' in navigator ) {
@@ -93,14 +95,15 @@ export function AuthContextProvider({children}) {
   }
 
   const getArtistInfo = async (id) => {
-    const response = await client.get(`/profile/artist/${id}`)
-    console.log('ARTIST', response.data)
-    return response.data
+      const response = await client.get(`/profile/artist/${id}`)
+      setArtist(response.data)
+      if (response.data !== null) setArtRes(true)
   }
 
   const getVenueInfo = async (id) => {
     const response = await client.get(`/profile/venue/${id}`)
-    console.log('VENUE', response.data)
+    setVenue(response.data)
+    if (response.data !== null) setVenRes(true)
   }
   
 
@@ -219,6 +222,8 @@ export function AuthContextProvider({children}) {
 
   const logout = () => {
     deleteToken();
+    setArtRes(false)
+    setVenRes(false)
     setUser(null);
     navigate("/");
   };
@@ -250,6 +255,10 @@ export function AuthContextProvider({children}) {
     geohash,
     getArtistInfo,
     getVenueInfo,
+    venue,
+    artist,
+    venRes,
+    artRes,
     /* likePost,
     unlikePost, */
 
