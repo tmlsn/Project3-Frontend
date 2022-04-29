@@ -8,10 +8,14 @@ export const AuthContext = createContext()
 export function AuthContextProvider({children}) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
+  const [liked, setLiked] = useState(false)
+  const [comments, setComments] = useState([]);
   const [concerts, setConcerts] = useState([])
   const [geohash, setGeohash] = useState('')
-  const [liked, setLiked] = useState(false)
+ 
+  
+  
 
   useEffect(() => {
     if ('geolocation' in navigator ) {
@@ -166,6 +170,43 @@ export function AuthContextProvider({children}) {
     allPosts()
   }
 
+  const addComment = async (content, post) => {
+    
+    const response = await client.post(`/comment/add-comment/${post._id}`, {
+      content,
+
+    });
+    seeComments(post._id)
+  }
+
+  const seeComments = async (postId) => {
+    try {
+      const response = await client.get(`/comment/see-comments/${postId}`)
+      setComments(response.data)
+      
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const editComment = async (content, comment) => {
+    const response = await client.put(`/comment/edit-comment/${comment._id}`, {
+      content,
+    });
+    seeComments(comment.post)
+  }
+
+  const deleteComment = async (comment) => {
+    try {
+      const response = await client.delete(`/comment/delete-comment/${comment._id}`)
+      console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', comment.post)
+      seeComments(comment.post)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const verify = async () => {
     try {
       const response = await client.get("/auth/verify")
@@ -197,15 +238,21 @@ export function AuthContextProvider({children}) {
     findPost,
     allPosts,
     deletePost,
-    posts, 
+    posts,
+    editPost,
+    addComment,
+    seeComments,
+    comments,
+    editComment,
+    deleteComment,
     getConcerts,
     concerts,
     geohash,
-    editPost,
     getArtistInfo,
     getVenueInfo,
     /* likePost,
     unlikePost, */
+
     
   }
 

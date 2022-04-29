@@ -1,5 +1,7 @@
 import { AuthContext } from "../../context";
 import { useState, useContext, useEffect } from "react";
+import { AddComment } from "../AddComment";
+import { SeeComments } from "../SeeComments";
 
 export function Post(post) {
     const [title, setTitle] = useState(post.title);
@@ -7,6 +9,8 @@ export function Post(post) {
     const { deletePost, user, allPosts, likePost, unlikePost, findPost, editPost } = useContext(AuthContext);
     const [editing, setEditing] = useState(false)
     const [options, setOptions] = useState(false)
+    const [seeComments, setSeeComments] = useState(false)
+    
 
     const handleDelete = () => {
         console.log(post.user, user._id)
@@ -36,6 +40,16 @@ export function Post(post) {
         }  
     }
 
+    const handleSeeComments = () => {
+        setSeeComments((previousValue) => {
+            return !previousValue
+        })
+    }
+
+    
+    
+    
+
      /* const handleLike = (post) => {
          console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', user._id)
         if(post.likes.includes(user._id)){
@@ -59,14 +73,14 @@ export function Post(post) {
                     <button onClick={handleOptions}>...</button>
                 ):(
                     <div>
-                    <button>Show the post</button>
+                    
                 {user._id === post.user ? (
                     <button onClick={handleDelete}>Delete</button>
                 ):(null)}
                 {user._id === post.user ? (
                     <button onClick={handleEditing}>Edit</button>
                 ):(null)}
-                <button onClick={handleOptions} >Hide options</button>
+                <button onClick={handleOptions}>Back</button>
                 </div>
                 )}
                 </div> ):(
@@ -91,6 +105,18 @@ export function Post(post) {
                     <button onClick={handleSave}>Save</button>
                     </div>
                 )}
+                <AddComment {...post} />
+                {!seeComments ?(
+                    <button onClick={handleSeeComments}>Show comments</button>
+                    ):(
+                        <div>
+                        
+                        <button onClick={handleSeeComments}>Hide comments</button>
+                    <h3>Comments</h3>
+                    <SeeComments {...post} />
+                    </div>
+                    )}
+                
             </div>
         
 }

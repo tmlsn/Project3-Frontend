@@ -5,4 +5,5 @@ export { Concerts } from "./Concerts"
 export { SignupFlow } from './SignupFlow'
 export { AddPost } from './AddPost'
 export { AllPosts } from './AllPosts'
+export { AddComment } from './AddComment'
 export { ProfileInfo } from './ProfileInfo'
