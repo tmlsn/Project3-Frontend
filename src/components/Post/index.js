@@ -2,20 +2,25 @@ import { AuthContext } from "../../context";
 import { useState, useContext, useEffect } from "react";
 import { AddComment } from "../AddComment";
 import { SeeComments } from "../SeeComments";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export function Post(post) {
     const [title, setTitle] = useState(post.title);
     const [content, setContent] = useState(post.content);
-    const { deletePost, user, allPosts, likePost, unlikePost, findPost, editPost } = useContext(AuthContext);
+    const { deletePost, user, allPosts, likePost, unlikePost, findPost, editPost, getOnePost } = useContext(AuthContext);
     const [editing, setEditing] = useState(false)
     const [options, setOptions] = useState(false)
     const [seeComments, setSeeComments] = useState(false)
+
+    const navigate = useNavigate();
     
 
     const handleDelete = () => {
         console.log(post.user, user._id)
         if(post.user === user._id){
             deletePost(post._id)
+            navigate("/")
             /* allPosts() */
         }  
     }
@@ -28,6 +33,7 @@ export function Post(post) {
 
     const handleEditing = () => {
         setEditing((previousValue) => {
+            /* getOnePost(post._id) */
             return !previousValue
         })
     }
@@ -46,8 +52,10 @@ export function Post(post) {
         })
     }
 
-    
-    
+    const handleGetPost = () => {
+        getOnePost(post._id)
+    }
+     
     
 
      /* const handleLike = (post) => {
@@ -64,7 +72,7 @@ export function Post(post) {
             return <div>
             {!editing ?(
                 <div>
-                <h3>{post.title}</h3>
+                <h3><Link to={`/post/${post._id}`}  >{post.title}</Link></h3>
                 <p>{post.content}</p>
                 <span>{post.createdAt} </span>
                 {/* <button onClick={handleLike(post)}>{post.likes.length}</button> */}
