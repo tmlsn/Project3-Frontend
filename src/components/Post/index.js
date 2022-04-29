@@ -35,7 +35,6 @@ export function Post(post) {
             handleEditing();
         }  
     }
-    
 
      /* const handleLike = (post) => {
          console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', user._id)

@@ -88,6 +88,16 @@ export function AuthContextProvider({children}) {
     }
   }
 
+  const getArtistInfo = async (id) => {
+    const response = await client.get(`/profile/artist/${id}`)
+    console.log('ARTIST', response.data)
+    return response.data
+  }
+
+  const getVenueInfo = async (id) => {
+    const response = await client.get(`/profile/venue/${id}`)
+    console.log('VENUE', response.data)
+  }
   
 
   const findPost = async (id) => {
@@ -192,6 +202,8 @@ export function AuthContextProvider({children}) {
     concerts,
     geohash,
     editPost,
+    getArtistInfo,
+    getVenueInfo,
     /* likePost,
     unlikePost, */
     
