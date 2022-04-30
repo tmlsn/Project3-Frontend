@@ -5,7 +5,7 @@ import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from "../../context";
 
 export function SignupFlow() {
-  const { signupArtist, signupVenue, user } = useContext(AuthContext);
+  const { signupArtist, signupVenue, user, setDetailsToTrue } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [isArtist, setIsArtist] = useState(undefined)
@@ -24,16 +24,28 @@ export function SignupFlow() {
   const [venueLocation, setVenueLocation] = useState("")
   const [contactInfo, setContactInfo] = useState("")
   const [capacity, setCapacity] = useState("")
+
+  useEffect(() => {
+    try {
+      console.log('SIGNUP FLOW USER DETAILS',user.details)
+      if (user.details === true) navigate('/')      
+    } catch (error) { 
+      console.log(error)
+    }
+  },[user])
+
   
   const handleSubmitArtist = (e) => {
     e.preventDefault()
     signupArtist(name, style, artistDescription, artistContactInfo, location)
+    setDetailsToTrue(user._id)
     navigate('/')
   }
     
   const handleSubmitVenue = (e) => {
     e.preventDefault()
     signupVenue(venueName, description, venueLocation, contactInfo, capacity)
+    setDetailsToTrue(user._id)
     navigate('/')
   }
   

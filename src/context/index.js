@@ -81,6 +81,12 @@ export function AuthContextProvider({children}) {
     });
   };
 
+  const setDetailsToTrue = async (id) => {
+    const response = await client.put(`/profile/${id}`, {
+      details: true
+    });
+  }
+
   const login = async (email, password) => {
     try {
       const response = await client.post('/auth/login', {
@@ -283,6 +289,7 @@ export function AuthContextProvider({children}) {
     artRes,
     editArtist,
     editVenue,
+    setDetailsToTrue,
     /* likePost,
     unlikePost, */
 
