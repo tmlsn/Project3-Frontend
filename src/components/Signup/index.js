@@ -12,13 +12,11 @@ export function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [details, setDetails] = useState(false)
-  console.log(details)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(firstName, lastName, email, password, details);
-    navigate('/signup-details')
-    
+    navigate('/login')
   };
 
   return (
