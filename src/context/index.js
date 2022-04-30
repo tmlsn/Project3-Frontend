@@ -9,6 +9,7 @@ export function AuthContextProvider({children}) {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState([]);
+  const [post, setPost] = useState()
   const [liked, setLiked] = useState(false)
   const [comments, setComments] = useState([]);
   const [concerts, setConcerts] = useState([])
@@ -201,6 +202,16 @@ export function AuthContextProvider({children}) {
     allPosts()
   }
 
+  const getOnePost = async (id) => {
+    try {
+      const response = await client.get(`/post/${id}`)
+      setPost(response.data) 
+      console.log('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv', response.data, id)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const addComment = async (content, post) => {
     
     const response = await client.post(`/comment/add-comment/${post._id}`, {
@@ -273,6 +284,9 @@ export function AuthContextProvider({children}) {
     deletePost,
     posts,
     editPost,
+    getOnePost,
+    post,
+    setPost,
     addComment,
     seeComments,
     comments,
