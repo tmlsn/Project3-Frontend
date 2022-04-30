@@ -14,9 +14,11 @@ export function AuthContextProvider({children}) {
   const [comments, setComments] = useState([]);
   const [concerts, setConcerts] = useState([])
   const [geohash, setGeohash] = useState('')
+  const [venue, setVenue] = useState('')
+  const [venRes, setVenRes] = useState(false)
+  const [artist, setArtist] = useState('')
+  const [artRes, setArtRes] = useState(false)
  
-  
-  
 
   useEffect(() => {
     if ('geolocation' in navigator ) {
@@ -93,6 +95,39 @@ export function AuthContextProvider({children}) {
     }
   }
 
+  const getArtistInfo = async (id) => {
+      const response = await client.get(`/profile/artist/${id}`)
+      setArtist(response.data)
+      if (response.data !== null) setArtRes(true)
+  }
+
+  const editArtist = async (name, location, style, description, contactInfo, id) => {
+    const response = await client.put(`/profile/artist/edit/${id}`, {
+      name, 
+      location, 
+      style, 
+      description,
+      contactInfo
+    });
+    getArtistInfo()
+  }
+
+  const getVenueInfo = async (id) => {
+    const response = await client.get(`/profile/venue/${id}`)
+    setVenue(response.data)
+    if (response.data !== null) setVenRes(true)
+  }
+
+  const editVenue = async (name, location, description, contactInfo, capacity, id) => {
+    const response = await client.put(`/profile/artist/edit/${id}`, {
+      name, 
+      location, 
+      description,
+      contactInfo,
+      capacity
+    });
+    getVenueInfo()
+  }
   
 
   const findPost = async (id) => {
@@ -220,6 +255,8 @@ export function AuthContextProvider({children}) {
 
   const logout = () => {
     deleteToken();
+    setArtRes(false)
+    setVenRes(false)
     setUser(null);
     navigate("/");
   };
@@ -248,11 +285,19 @@ export function AuthContextProvider({children}) {
     comments,
     editComment,
     deleteComment,
-    /* likePost,
-    unlikePost, */ 
     getConcerts,
     concerts,
     geohash,
+    getArtistInfo,
+    getVenueInfo,
+    venue,
+    artist,
+    venRes,
+    artRes,
+    editArtist,
+    editVenue,
+    /* likePost,
+    unlikePost, */
 
     
   }

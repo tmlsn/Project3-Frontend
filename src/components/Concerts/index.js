@@ -17,7 +17,6 @@ export function Concerts() {
           <div key={concert.id}>
             <p >{concert.name}</p>
             <img src={concert.images[0].url} style={{width: 100}} alt='event' />
-
           </div>
         )
       })}
