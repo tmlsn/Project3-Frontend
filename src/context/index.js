@@ -280,6 +280,7 @@ export function AuthContextProvider({children}) {
     editPost,
     getOnePost,
     post,
+    setPost,
     addComment,
     seeComments,
     comments,

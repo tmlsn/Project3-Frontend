@@ -29,11 +29,12 @@ export function Post(post) {
         setOptions((previousValue) => {
             return !previousValue
         })
+        
     }
 
     const handleEditing = () => {
+        getOnePost(post._id)
         setEditing((previousValue) => {
-            /* getOnePost(post._id) */
             return !previousValue
         })
     }
@@ -72,7 +73,7 @@ export function Post(post) {
             return <div>
             {!editing ?(
                 <div>
-                <h3><Link to={`/post/${post._id}`}  >{post.title}</Link></h3>
+                <h3><Link to={`/post/${post._id}`} >{post.title}</Link></h3>
                 <p>{post.content}</p>
                 <span>{post.createdAt} </span>
                 {/* <button onClick={handleLike(post)}>{post.likes.length}</button> */}

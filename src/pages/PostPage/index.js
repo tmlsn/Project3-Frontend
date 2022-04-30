@@ -5,11 +5,11 @@ import { AuthContext } from "../../context";
 import { useContext, useEffect } from "react";
 
 export function PostPage() {
-  const { getOnePost, post } = useContext(AuthContext);
+  const { getOnePost, post, setPost } = useContext(AuthContext);
   const url = window.location.pathname.split('/');
   const id = url[2]
   useEffect(() => {
-    getOnePost(id)
+    setPost(getOnePost(id))
 },[])
   
 
