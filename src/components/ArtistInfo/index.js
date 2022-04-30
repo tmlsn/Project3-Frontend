@@ -17,12 +17,15 @@ export function ArtistInfo() {
     })
   }
 
-  const handleSave = () => {
+  const handleSave = (e) => {
+    e.preventDefault()
     editArtist(name, location, style, description, contactInfo, user._id)
     handleEdit()
-    getArtistInfo()
   }
 
+  const handleCancel = () => {
+    handleEdit()
+  }
 
   return (
     <div>
@@ -78,6 +81,7 @@ export function ArtistInfo() {
             }}
           />
           <button onClick={handleSave}>Save</button>
+          <button onClick={handleCancel}>Cancel</button>
       </div>
       )
       }

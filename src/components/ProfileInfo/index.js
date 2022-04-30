@@ -8,9 +8,6 @@ export function ProfileInfo() {
   const [artist, setArtist] = useState()
   const [venue, setVenue] = useState()
 
-  console.log('VENUE', venRes)
-  console.log('ARTIST', artRes)
-
   useEffect(() => {
     getArtistInfo(user._id)
     getVenueInfo(user._id)

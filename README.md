@@ -68,3 +68,58 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+****
+
+/* CSS HEX */
+--quick-silver: #a7a7a7ff;
+--rich-black-fogra-39: #0b0b0bff;
+--platinum: #e3e3e3ff;
+--granite-gray: #626262ff;
+--jet: #292929ff;
+
+/* CSS HSL */
+--quick-silver: hsla(0, 0%, 65%, 1);
+--rich-black-fogra-39: hsla(0, 0%, 4%, 1);
+--platinum: hsla(0, 0%, 89%, 1);
+--granite-gray: hsla(0, 0%, 38%, 1);
+--jet: hsla(0, 0%, 16%, 1);
+
+/* SCSS HEX */
+$quick-silver: #a7a7a7ff;
+$rich-black-fogra-39: #0b0b0bff;
+$platinum: #e3e3e3ff;
+$granite-gray: #626262ff;
+$jet: #292929ff;
+
+/* SCSS HSL */
+$quick-silver: hsla(0, 0%, 65%, 1);
+$rich-black-fogra-39: hsla(0, 0%, 4%, 1);
+$platinum: hsla(0, 0%, 89%, 1);
+$granite-gray: hsla(0, 0%, 38%, 1);
+$jet: hsla(0, 0%, 16%, 1);
+
+/* SCSS RGB */
+$quick-silver: rgba(167, 167, 167, 1);
+$rich-black-fogra-39: rgba(11, 11, 11, 1);
+$platinum: rgba(227, 227, 227, 1);
+$granite-gray: rgba(98, 98, 98, 1);
+$jet: rgba(41, 41, 41, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #a7a7a7ff, #0b0b0bff, #e3e3e3ff, #626262ff, #292929ff);
+$gradient-right: linear-gradient(90deg, #a7a7a7ff, #0b0b0bff, #e3e3e3ff, #626262ff, #292929ff);
+$gradient-bottom: linear-gradient(180deg, #a7a7a7ff, #0b0b0bff, #e3e3e3ff, #626262ff, #292929ff);
+$gradient-left: linear-gradient(270deg, #a7a7a7ff, #0b0b0bff, #e3e3e3ff, #626262ff, #292929ff);
+$gradient-top-right: linear-gradient(45deg, #a7a7a7ff, #0b0b0bff, #e3e3e3ff, #626262ff, #292929ff);
+$gradient-bottom-right: linear-gradient(135deg, #a7a7a7ff, #0b0b0bff, #e3e3e3ff, #626262ff, #292929ff);
+$gradient-top-left: linear-gradient(225deg, #a7a7a7ff, #0b0b0bff, #e3e3e3ff, #626262ff, #292929ff);
+$gradient-bottom-left: linear-gradient(315deg, #a7a7a7ff, #0b0b0bff, #e3e3e3ff, #626262ff, #292929ff);
+$gradient-radial: radial-gradient(#a7a7a7ff, #0b0b0bff, #e3e3e3ff, #626262ff, #292929ff);
+
+FFB703
+FFD60A
+FFC300
+FF9E00
+OAEFFF

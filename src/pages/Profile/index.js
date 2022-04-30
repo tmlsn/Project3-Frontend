@@ -3,7 +3,7 @@ import { Navbar } from '../../components/Navbar';
 import { AddPost } from '../../components/AddPost';
 import { ProfileInfo } from '../../components';
 
-export function Profile(user) {
+export function Profile() {
     return (
     <div>
       <Navbar />

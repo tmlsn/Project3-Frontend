@@ -100,15 +100,15 @@ export function AuthContextProvider({children}) {
       if (response.data !== null) setArtRes(true)
   }
 
-  const editArtist = async (name, location, style, description, contactInfo, id) => {
+  const editArtist = async (name, style, description, contactInfo, location, id) => {
     const response = await client.put(`/profile/artist/edit/${id}`, {
       name, 
-      location, 
       style, 
       description,
-      contactInfo
+      contactInfo,
+      location
     });
-    getArtistInfo()
+    getArtistInfo(id)
   }
 
   const getVenueInfo = async (id) => {
@@ -118,14 +118,14 @@ export function AuthContextProvider({children}) {
   }
 
   const editVenue = async (name, location, description, contactInfo, capacity, id) => {
-    const response = await client.put(`/profile/artist/edit/${id}`, {
+    const response = await client.put(`/profile/venue/edit/${id}`, {
       name, 
       location, 
       description,
       contactInfo,
       capacity
     });
-    getVenueInfo()
+    getVenueInfo(id)
   }
   
 

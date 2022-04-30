@@ -17,12 +17,16 @@ export function VenueInfo() {
     })
   }
 
-  const handleSave = () => {
+  const handleSave = (e) => {
+    e.preventDefault()
     const id = user._id
     editVenue(name, location, description, contactInfo, capacity, id)
     handleEdit()
-    getVenueInfo()
   }  
+
+  const handleCancel = () => {
+    handleEdit()
+  }
 
   return (
     <div>
@@ -35,7 +39,7 @@ export function VenueInfo() {
         <p>Contact info: {venue.contactInfo}</p>
         <button onClick={handleEdit}>Edit info</button>
       </div> ) : (
-        <div>
+        <div className={styles.profileForm}>
           <label htmlFor="name">What's the name of your venue?</label>
           <input
             id="name"
@@ -78,6 +82,7 @@ export function VenueInfo() {
             }}
           />
           <button onClick={handleSave}>Save</button>
+          <button onClick={handleCancel}>Cancel</button>
         </div>
       )
     }
