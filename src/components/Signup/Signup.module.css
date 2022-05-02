@@ -1,0 +1,45 @@
+.outsideContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 4em;
+}
+
+.signupContainer {
+  background-color: rgba(167, 167, 167, 0.6);
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  border-radius: 5px;
+}
+
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+}
+
+.signupForm label {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.signupForm input {
+  min-width: 190px;
+  max-width: 300px;
+  height: 1.4em;
+  border: none;
+  background-color: rgba(227, 227, 227, 0.8);
+  border-radius: 3px;
+}
+
+.signupForm button {
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 5px 10px 5px 10px;
+  border: none;
+  border-radius: 4px;
+}

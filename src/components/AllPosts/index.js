@@ -14,7 +14,7 @@ export function AllPosts() {
 
     return <div>
         {posts.map((post) => {
-            return <Post {...post}/>
+            return <Post {...post} key={post.id}/>
            
         })}
     </div>
