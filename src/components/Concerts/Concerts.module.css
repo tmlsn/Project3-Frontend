@@ -1,0 +1,42 @@
+.concertsContainer {
+  display: flex;
+  background-color: rgba(98, 98, 98, 0.8);
+  flex-direction: column;
+
+  padding: 15px;
+}
+
+.concertsContainer h3 {
+  color: rgba(227, 227, 227, 1);
+  padding: 15px;
+  font-size: 22px;
+}
+
+.concertsGrid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.concertTile {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  background-color: rgba(41, 41, 41, 1);
+}
+
+.concertTile a {
+  text-decoration: none;
+  color: rgba(227, 227, 227, 1);
+  font-size: 15px;
+  font-weight: 600;
+  max-width: 130px;
+}
+
+.concertTile a:hover,
+.concertTile a::-webkit-search-decoration {
+  color: #FFD60A;
+}

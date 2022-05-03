@@ -22,7 +22,7 @@ export function Login() {
       <div className={styles.outsideContainer}>
         <div className={styles.loginContainer}>
           <form onSubmit={handleSubmit} className={styles.loginForm}>
-            <h2>Login</h2>
+            <h2>Log in</h2>
             <label htmlFor="email">Email:</label>
             <input
               id="email"

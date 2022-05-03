@@ -25,7 +25,7 @@ export function Signup() {
       <div className={styles.outsideContainer}>
         <div className={styles.signupContainer}>
           <form onSubmit={handleSubmit} className={styles.signupForm}>
-            <h2>Signup</h2>
+            <h2>Sign up</h2>
             <label htmlFor="firstName">First name:</label>
             <input
               id="firstName"

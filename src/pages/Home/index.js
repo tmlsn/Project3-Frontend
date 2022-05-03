@@ -5,9 +5,15 @@ export function Home() {
   return <div>
     <Navbar />
     <div className={styles.body}>
-    <div className='concertContainer'><Concerts /></div>
-    <div className='postsContainer'><AddPost /></div>
-    <AllPosts/>
+      <div className={styles.concertsContainer}>
+        <Concerts />
+      </div>
+      <div className={styles.addPostContainer}>
+        <AddPost />
+      </div>
+      <div className={styles.allPostsContainer}> 
+        <AllPosts/>
+      </div>
     </div>
   </div>
 }
