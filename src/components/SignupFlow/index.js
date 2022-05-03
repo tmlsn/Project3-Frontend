@@ -112,7 +112,6 @@ export function SignupFlow() {
               />
               <button>Save</button>
               </form>
-
             </div> : 
             <div className={styles.formContainer}>
               <form onSubmit={handleSubmitVenue} className={styles.profileForm}>
