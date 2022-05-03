@@ -24,11 +24,10 @@
   border-radius: 4px;
 }
 
-
 .outsideContainer {
   display: flex;
   justify-content: center;
-  padding-top: 4em;
+  padding-top: 1em;
 }
 
 .sdContainer {

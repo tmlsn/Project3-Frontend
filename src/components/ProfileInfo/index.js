@@ -1,3 +1,4 @@
+import styles from './ProfileInfo.module.css'
 import { AuthContext } from "../../context";
 import { useState, useContext, useEffect } from "react";
 import { ArtistInfo } from "../ArtistInfo";
@@ -14,7 +15,7 @@ export function ProfileInfo() {
   },[])
 
   return (
-    <div> 
+    <div className={styles.container}> 
       {artRes && <ArtistInfo />}
       {venRes && <VenueInfo />}
     </div>
