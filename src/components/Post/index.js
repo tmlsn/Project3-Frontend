@@ -16,6 +16,11 @@ export function Post(post) {
     const navigate = useNavigate();
     
 
+    useEffect( () => {
+        setTitle(post.title)
+        setContent(post.content)
+    },[post])
+
     const handleDelete = () => {
         console.log(post.user, user._id)
         if(post.user === user._id){
@@ -71,6 +76,7 @@ export function Post(post) {
     } */
     
             return <div>
+            {console.log('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',post)}
             {!editing ?(
                 <div>
                 <h3><Link to={`/post/${post._id}`} >{post.title}</Link></h3>

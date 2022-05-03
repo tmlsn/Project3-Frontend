@@ -7,6 +7,7 @@ export function Comment(comment) {
     const { user, seeComments,  editComment, deleteComment } = useContext(AuthContext);
     const [editing, setEditing] = useState(false)
     const [options, setOptions] = useState(false)
+    const postId = comment.post
 
 
     const handleOptions = () => {

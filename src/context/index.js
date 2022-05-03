@@ -241,9 +241,10 @@ export function AuthContextProvider({children}) {
 
   const deleteComment = async (comment) => {
     try {
+      const postId = comment.post 
       const response = await client.delete(`/comment/delete-comment/${comment._id}`)
       console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', comment.post)
-      seeComments(comment.post)
+      seeComments(postId)
     } catch (error) {
       console.log(error)
     }
