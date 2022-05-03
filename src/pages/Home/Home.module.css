@@ -1,4 +1,6 @@
 .body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    padding-top: 4em;
+    padding: 20px;
 }

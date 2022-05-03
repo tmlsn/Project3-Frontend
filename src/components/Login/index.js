@@ -19,28 +19,32 @@ export function Login() {
   return (
     <div>
     <Navbar />
-      <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          id="password"
-          type="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <button>Log in</button>
-      </form>
+      <div className={styles.outsideContainer}>
+        <div className={styles.loginContainer}>
+          <form onSubmit={handleSubmit} className={styles.loginForm}>
+            <h2>Log in</h2>
+            <label htmlFor="email">Email:</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+            <label htmlFor="password">Password:</label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <button>Log in</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

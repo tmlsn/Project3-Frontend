@@ -119,7 +119,9 @@ $gradient-bottom-left: linear-gradient(315deg, #a7a7a7ff, #0b0b0bff, #e3e3e3ff, 
 $gradient-radial: radial-gradient(#a7a7a7ff, #0b0b0bff, #e3e3e3ff, #626262ff, #292929ff);
 
 FFB703
-FFD60A
+
 FFC300
 FF9E00
 OAEFFF
+
+FFD60A

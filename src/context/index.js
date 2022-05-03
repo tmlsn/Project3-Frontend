@@ -107,13 +107,13 @@ export function AuthContextProvider({children}) {
       if (response.data !== null) setArtRes(true)
   }
 
-  const editArtist = async (name, style, description, contactInfo, location, id) => {
+  const editArtist = async (name, location,  style, description, contactInfo, id) => {
     const response = await client.put(`/profile/artist/edit/${id}`, {
       name, 
+      location, 
       style, 
       description,
       contactInfo,
-      location
     });
     getArtistInfo(id)
   }
@@ -252,7 +252,7 @@ export function AuthContextProvider({children}) {
 
   const verify = async () => {
     try {
-      const response = await client.get("/auth/verify")
+      const response = await client.post("/auth/verify")
       setUser(response.data.user)
       //navigate('/profile')
     } catch(error) {

@@ -14,7 +14,7 @@ export function SeeComments(post) {
     
     return <div>
         {comments.map((comment) => {
-            return <Comment key={comment._id} {...comment} />
+            return <Comment {...comment} key={comment.id}/>
            
         })}
     </div>
