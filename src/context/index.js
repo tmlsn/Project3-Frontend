@@ -206,7 +206,6 @@ export function AuthContextProvider({children}) {
     try {
       const response = await client.get(`/post/${id}`)
       setPost(response.data) 
-      console.log('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv', response.data, id)
     } catch (error) {
       console.log(error)
     }
@@ -243,7 +242,6 @@ export function AuthContextProvider({children}) {
     try {
       const postId = comment.post 
       const response = await client.delete(`/comment/delete-comment/${comment._id}`)
-      console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', comment.post)
       seeComments(postId)
     } catch (error) {
       console.log(error)

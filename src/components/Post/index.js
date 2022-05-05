@@ -76,7 +76,6 @@ export function Post(post) {
     } */
     
             return <div>
-            {console.log('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',post)}
             {!editing ?(
                 <div>
                 <h3><Link to={`/post/${post._id}`} >{post.title}</Link></h3>

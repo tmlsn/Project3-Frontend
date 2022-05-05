@@ -13,9 +13,7 @@ export function PostPage() {
 },[])
   
 
-  console.log('ggggggggggggggggggggggggggg', url)
-  console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhh',  id)
-  console.log('iiiiiiiiiiiiiiiiiiiiiiiiiiii',  post)
+  
 
     return (
     <>
