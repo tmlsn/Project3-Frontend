@@ -1,0 +1,39 @@
+.postContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(98, 98, 98, 0.8);
+
+}
+
+.postLink {
+  text-decoration: none;
+  color: #a7a7a7ff;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.postLink:hover {
+    text-decoration: none;
+    color: #FFD60A;
+    font-weight: 600;
+    font-size: 1.2em;
+  }
+
+.postContainer button {
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 7%;
+    padding: 0.5em;
+    margin: 0.2em;
+    max-width: 5em;
+}
+
+.postContainer button:hover {
+    border: none;
+    background-color: black;
+    color: #FFD60A;
+    border-radius: 7%;
+    padding: 0.5em;
+    margin: 0.2em
+}

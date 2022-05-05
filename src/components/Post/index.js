@@ -1,3 +1,4 @@
+import styles from './Post.module.css'
 import { AuthContext } from "../../context";
 import { useState, useContext, useEffect } from "react";
 import { AddComment } from "../AddComment";
@@ -77,26 +78,27 @@ export function Post(post) {
     
             return <div>
             {!editing ?(
-                <div>
-                <h3><Link to={`/post/${post._id}`} >{post.title}</Link></h3>
-                <p>{post.content}</p>
-                <span>{post.createdAt} </span>
-                {/* <button onClick={handleLike(post)}>{post.likes.length}</button> */}
-                
+                <div className={styles.postContainer}>
+                <h2>{post.user.firstName}</h2>
                 {!options ? (
-                    <button onClick={handleOptions}>...</button>
+                    <button onClick={handleOptions}>Options</button>
                 ):(
                     <div>
                     
-                {user._id === post.user ? (
+                {user._id === post.user._id ? (
                     <button onClick={handleDelete}>Delete</button>
                 ):(null)}
-                {user._id === post.user ? (
+                {user._id === post.user._id ? (
                     <button onClick={handleEditing}>Edit</button>
                 ):(null)}
                 <button onClick={handleOptions}>Back</button>
                 </div>
                 )}
+                <h3><Link className={styles.postLink} to={`/post/${post._id}`} >{post.title}</Link></h3>
+                <p>{post.content}</p>
+                <span>{post.createdAt} </span>
+                {/* <button onClick={handleLike(post)}>{post.likes.length}</button> */}
+                
                 </div> ):(
                     <div>
                     <input

@@ -1,3 +1,4 @@
+import styles from './AddPost.module.css'
 import { AuthContext } from "../../context";
 import { useState, useContext } from "react";
 
@@ -16,7 +17,7 @@ export function AddPost() {
     setContent('')
   };
     
-    return <div>
+    return <div className={styles.addPostContainer}>
     {user ? (
         <form onSubmit={handleSubmit}>
         <h2>Create a Post</h2>

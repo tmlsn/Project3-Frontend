@@ -1,3 +1,4 @@
+
 import { AuthContext } from "../../context";
 import { useState, useContext, useEffect } from "react";
 
@@ -41,9 +42,12 @@ export function Comment(comment) {
 
 
     return (
-        <div>
+        <div >
         {!editing ? (
+            <div>
+            <h5>{comment.user.firstName}</h5>
             <span>{content}</span>
+            </div>
         ):(
             <div>
             <input
@@ -60,7 +64,7 @@ export function Comment(comment) {
         )}
         
         <div>
-            {user._id === comment.user ? (
+            {user._id === comment.user._id ? (
                 <button onClick={handleOptions}>...</button>
             ):(null)}
             {options ? ( 
