@@ -1,3 +1,11 @@
+.allVenuesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+}
+
 .infoContainer {
   display: flex;
   background-color: rgba(167, 167, 167, 0.8);
