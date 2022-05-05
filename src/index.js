@@ -8,6 +8,8 @@ import { Chat, Home, NotFound, Profile, PostPage } from './pages';
 import { AuthContextProvider } from './context';
 
 import { Login, Signup, SignupFlow } from './components';
+import { AllArtists } from './components/AllArtists';
+import { AllVenues } from './components/AllVenues';
 
 
 
@@ -21,6 +23,8 @@ ReactDOM.render(
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/signup-details' element={<SignupFlow />} />
+          <Route path='/artists' element={<AllArtists />} />
+          <Route path='/venues' element={<AllVenues />} />
           <Route path='/chat' element={<Chat />} />
           <Route path='/post/:id' element={<PostPage />} />
           <Route path='*' element={<NotFound/>} />
