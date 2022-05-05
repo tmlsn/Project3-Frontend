@@ -8,7 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
 export function Navbar() {
   const navigate = useNavigate();
   const { signup, login, logout, user } = useContext(AuthContext);
-  console.log(user)
   
   return <nav className={styles.navbar}>
     <div>

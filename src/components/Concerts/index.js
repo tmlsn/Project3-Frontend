@@ -8,7 +8,6 @@ export function Concerts() {
     useEffect(() => {
       getConcerts(geohash)
     },[])
-    console.log('COOOCOCOCOCOCOCO',concerts)
 
   return (
     <div className={styles.concertsContainer}>

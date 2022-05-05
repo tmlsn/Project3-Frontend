@@ -134,6 +134,26 @@ export function AuthContextProvider({children}) {
     });
     getVenueInfo(id)
   }
+
+  const getAllArtists = async () => {
+    try {
+      const response = await client.get("/artist/all")
+      return response.data
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const getAllVenues = async () => {
+    try {
+      const response = await client.get("/venue/all")
+      return response.data
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
   
 
   const findPost = async (id) => {
@@ -303,6 +323,8 @@ export function AuthContextProvider({children}) {
     editArtist,
     editVenue,
     setDetailsToTrue,
+    getAllArtists,
+    getAllVenues,
     /* likePost,
     unlikePost, */
 
