@@ -41,6 +41,7 @@ export function AuthContextProvider({children}) {
       
     } catch (error) {
       console.log(error)
+      setConcerts(null)
     }
   }
 
