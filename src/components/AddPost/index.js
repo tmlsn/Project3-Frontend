@@ -39,7 +39,9 @@ export function AddPost() {
             setContent(e.target.value);
           }}
         />
+        <div className={styles.createBtn}>
         <button>Create</button>
+        </div>
         </form>
         ) : (
           <h2>Create an account or log in to share a post!</h2>

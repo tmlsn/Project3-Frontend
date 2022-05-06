@@ -76,9 +76,10 @@ export function Post(post) {
         }
     } */
     
-            return <div>
+            return <div className={styles.postAndCommentContainer}>
             {!editing ?(
                 <div className={styles.postContainer}>
+                <div className={styles.postHeader}>
                 <h2>{post.user.firstName}</h2>
                 {!options ? (
                     <button onClick={handleOptions}>Options</button>
@@ -94,13 +95,14 @@ export function Post(post) {
                 <button onClick={handleOptions}>Back</button>
                 </div>
                 )}
+                </div>
                 <h3><Link className={styles.postLink} to={`/post/${post._id}`} >{post.title}</Link></h3>
                 <p>{post.content}</p>
                 <span>{post.createdAt} </span>
                 {/* <button onClick={handleLike(post)}>{post.likes.length}</button> */}
                 
                 </div> ):(
-                    <div>
+                    <div className={styles.postEditContainer}>
                     <input
                         id="title"
                         type="title"
@@ -109,7 +111,7 @@ export function Post(post) {
                         setTitle(e.target.value);
                         }}
                     />
-                    <input
+                    <textarea
                         id="content"
                         type="content"
                         value={content}
@@ -117,10 +119,13 @@ export function Post(post) {
                         setContent(e.target.value);
                         }}
                     />
+                    <div className={styles.postEditBtns}>
                     <button onClick={handleEditing}>Cancel</button>
                     <button onClick={handleSave}>Save</button>
                     </div>
+                    </div>
                 )}
+                <div className={styles.commentBtns}>
                 <AddComment {...post} />
                 {!seeComments ?(
                     <button onClick={handleSeeComments}>Show comments</button>
@@ -132,7 +137,7 @@ export function Post(post) {
                     <SeeComments {...post} />
                     </div>
                     )}
-                
+                </div>  
             </div>
         
 }
