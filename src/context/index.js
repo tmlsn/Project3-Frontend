@@ -216,11 +216,13 @@ export function AuthContextProvider({children}) {
   }  */
 
   const editPost = async (title, content, id) => {
+    console.log('uuuuuuuuuuuuuuuuuuuuu', content)
     const response = await client.put(`/post/edit-post/${id}`, {
       title,
       content,
     });
     allPosts()
+    
   }
 
   const getOnePost = async (id) => {

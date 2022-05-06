@@ -23,7 +23,7 @@ export function Post(post) {
     },[post])
 
     const handleDelete = () => {
-        console.log(post.user, user._id)
+        console.log('ccccccccccccccccccccccccc',post.user, user._id)
         if(post.user === user._id){
             deletePost(post._id)
             navigate("/")
@@ -46,7 +46,7 @@ export function Post(post) {
     }
 
     const handleSave = () => {
-        console.log(post.user, user._id)
+        console.log('ppppppppppppppppppppppppppppppp',post.user, user._id)
         if(post.user === user._id){
             editPost(title, content, post._id)
             handleEditing();
@@ -119,7 +119,7 @@ export function Post(post) {
                         setContent(e.target.value);
                         }}
                     />
-                    <div className={styles.postEditBtns}>
+                    <div className={styles.postEditBtns} >
                     <button onClick={handleEditing}>Cancel</button>
                     <button onClick={handleSave}>Save</button>
                     </div>
@@ -131,13 +131,18 @@ export function Post(post) {
                     <button onClick={handleSeeComments}>Show comments</button>
                     ):(
                         <div>
-                        
+                        <div>
                         <button onClick={handleSeeComments}>Hide comments</button>
-                    <h3>Comments</h3>
+                        </div>
+                        <div className={styles.commentsContainer}>
+                    
+                    
                     <SeeComments {...post} />
                     </div>
+                    </div>
                     )}
-                </div>  
+                    </div>
+                
             </div>
         
 }

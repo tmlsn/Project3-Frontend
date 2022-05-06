@@ -24,7 +24,7 @@
 }
 
 .postHeader h2 {
-  color: #FFD60A;
+  color: #a7a7a7ff;
 }
 
 .postContainer p {
@@ -39,14 +39,14 @@
 
 .postLink {
   text-decoration: none;
-  color: #a7a7a7ff;
+  color: #FFD60A;
   font-weight: 600;
   font-size: 1.2em;
 }
 
 .postLink:hover {
     text-decoration: none;
-    color: #FFD60A;
+    color: #a7a7a7ff;
     font-weight: 600;
     font-size: 1.2em;
   }
@@ -119,6 +119,11 @@
     padding: 0.6em;
     margin: 0.5em;
     max-width: 5em;
+}
+
+.commentsContainer {
+  display: block;
+  justify-content: flex-start;
 }
 
 .commentBtns {

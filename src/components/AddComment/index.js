@@ -1,3 +1,4 @@
+import styles from './AddComment.module.css'
 import { AuthContext } from "../../context";
 import { useState, useContext, useEffect } from "react";
 
@@ -28,6 +29,7 @@ export function AddComment(post) {
         ):(
             <form>
                 <input
+                className={styles.commentInput}
                 id="content"
                 type="content"
                 value={content}

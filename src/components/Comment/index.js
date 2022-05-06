@@ -1,4 +1,5 @@
 
+import styles from './Comment.module.css'
 import { AuthContext } from "../../context";
 import { useState, useContext, useEffect } from "react";
 
@@ -42,11 +43,27 @@ export function Comment(comment) {
 
 
     return (
-        <div >
+        <div className={styles.comments}>
         {!editing ? (
-            <div>
-            <h5>{comment.user.firstName}</h5>
-            <span>{content}</span>
+            <div className={styles.commentContainer}>
+            <div className={styles.commentHeader}>
+            <h2>{comment.user.firstName}</h2>
+            <div className={styles.editBtns}>
+            {user._id === comment.user._id ? (
+                <div>
+                <button onClick={handleOptions}>...</button>
+                </div>
+            ):(null)}
+            {options ? ( 
+                    <div>
+                    <button onClick={handleEditing}>Edit</button>
+                    <button onClick={handleDelete}>Delete</button>
+                    </div>
+                ):(null)}
+                </div>
+                </div>
+            <p>{content}</p>
+            <span>{comment.createdAt}</span>
             </div>
         ):(
             <div>
@@ -62,18 +79,8 @@ export function Comment(comment) {
             <button onClick={handleEditing}>Close</button>
             </div>
         )}
-        
-        <div>
-            {user._id === comment.user._id ? (
-                <button onClick={handleOptions}>...</button>
-            ):(null)}
-            {options ? ( 
-                    <div>
-                    <button onClick={handleEditing}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button>
-                    </div>
-                ):(null)}
-            </div>
         </div>
+        
+       
     )
 }
