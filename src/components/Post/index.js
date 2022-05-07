@@ -1,3 +1,4 @@
+import styles from './Post.module.css'
 import { AuthContext } from "../../context";
 import { useState, useContext, useEffect } from "react";
 import { AddComment } from "../AddComment";
@@ -16,8 +17,13 @@ export function Post(post) {
     const navigate = useNavigate();
     
 
+    useEffect( () => {
+        setTitle(post.title)
+        setContent(post.content)
+    },[post])
+
     const handleDelete = () => {
-        console.log(post.user, user._id)
+        console.log('ccccccccccccccccccccccccc',post.user, user._id)
         if(post.user === user._id){
             deletePost(post._id)
             navigate("/")
@@ -40,7 +46,7 @@ export function Post(post) {
     }
 
     const handleSave = () => {
-        console.log(post.user, user._id)
+        console.log('ppppppppppppppppppppppppppppppp',post.user, user._id)
         if(post.user === user._id){
             editPost(title, content, post._id)
             handleEditing();
@@ -70,30 +76,33 @@ export function Post(post) {
         }
     } */
     
-            return <div>
+            return <div className={styles.postAndCommentContainer}>
             {!editing ?(
-                <div>
-                <h3><Link to={`/post/${post._id}`} >{post.title}</Link></h3>
-                <p>{post.content}</p>
-                <span>{post.createdAt} </span>
-                {/* <button onClick={handleLike(post)}>{post.likes.length}</button> */}
-                
+                <div className={styles.postContainer}>
+                <div className={styles.postHeader}>
+                <h2>{post.user.firstName}</h2>
                 {!options ? (
-                    <button onClick={handleOptions}>...</button>
+                    <button onClick={handleOptions}>Options</button>
                 ):(
                     <div>
                     
-                {user._id === post.user ? (
+                {user._id === post.user._id ? (
                     <button onClick={handleDelete}>Delete</button>
                 ):(null)}
-                {user._id === post.user ? (
+                {user._id === post.user._id ? (
                     <button onClick={handleEditing}>Edit</button>
                 ):(null)}
                 <button onClick={handleOptions}>Back</button>
                 </div>
                 )}
+                </div>
+                <h3><Link className={styles.postLink} to={`/post/${post._id}`} >{post.title}</Link></h3>
+                <p>{post.content}</p>
+                <span>{post.createdAt} </span>
+                {/* <button onClick={handleLike(post)}>{post.likes.length}</button> */}
+                
                 </div> ):(
-                    <div>
+                    <div className={styles.postEditContainer}>
                     <input
                         id="title"
                         type="title"
@@ -102,7 +111,7 @@ export function Post(post) {
                         setTitle(e.target.value);
                         }}
                     />
-                    <input
+                    <textarea
                         id="content"
                         type="content"
                         value={content}
@@ -110,21 +119,29 @@ export function Post(post) {
                         setContent(e.target.value);
                         }}
                     />
+                    <div className={styles.postEditBtns} >
                     <button onClick={handleEditing}>Cancel</button>
                     <button onClick={handleSave}>Save</button>
                     </div>
+                    </div>
                 )}
+                <div className={styles.commentBtns}>
                 <AddComment {...post} />
                 {!seeComments ?(
                     <button onClick={handleSeeComments}>Show comments</button>
                     ):(
                         <div>
-                        
+                        <div>
                         <button onClick={handleSeeComments}>Hide comments</button>
-                    <h3>Comments</h3>
+                        </div>
+                        <div className={styles.commentsContainer}>
+                    
+                    
                     <SeeComments {...post} />
                     </div>
+                    </div>
                     )}
+                    </div>
                 
             </div>
         

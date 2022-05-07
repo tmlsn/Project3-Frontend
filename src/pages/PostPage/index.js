@@ -9,19 +9,24 @@ export function PostPage() {
   const url = window.location.pathname.split('/');
   const id = url[2]
   useEffect(() => {
-    setPost(getOnePost(id))
+    getOnePost(id)
 },[])
   
 
-  console.log('ggggggggggggggggggggggggggg', url)
-  console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhh',  id)
-  console.log('iiiiiiiiiiiiiiiiiiiiiiiiiiii',  post)
+  
 
     return (
     <>
+    {post ? (
+      <div>
     <div><Navbar /></div>
     <div><Post {...post} />
+    </div> 
     </div>
+    ):(
+      <div>The page is currently loading</div>
+    )
+  }
     </>
     )
     

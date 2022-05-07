@@ -1,0 +1,152 @@
+.postAndCommentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.postContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+    min-width: 45%;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+
+}
+
+.postHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postHeader h2 {
+  color: #a7a7a7ff;
+}
+
+.postContainer p {
+  color: #a7a7a7ff;
+}
+
+.postContainer span {
+  color: #a7a7a7ff;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.postLink {
+  text-decoration: none;
+  color: #FFD60A;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.postLink:hover {
+    text-decoration: none;
+    color: #a7a7a7ff;
+    font-weight: 600;
+    font-size: 1.2em;
+  }
+
+.postContainer button {
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 0.6em;
+    padding: 0.5em;
+    margin: 0.2em;
+    max-width: 5em;
+}
+
+.postContainer button:hover {
+    border: none;
+    background-color: black;
+    color: #FFD60A;
+    border-radius: 0.6em;
+    padding: 0.5em;
+    margin: 0.2em
+}
+
+.postEditContainer {
+  display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+    min-width: 45%;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+}
+
+.postEditContainer input {
+  margin: 0.6em;
+  padding: 0.5em;
+  border-radius: 0.6em ;
+  background-color: #a7a7a7ff;
+}
+
+.postEditContainer textarea {
+  margin: 0.6em;
+  padding: 0.5em;
+  border-radius: 0.6em ;
+  resize: none;
+  min-height: 5em;
+  background-color: #a7a7a7ff;
+}
+
+.postEditBtns {
+  display: flex;
+  justify-content: center;
+}
+
+.postEditBtns button {
+  border: none;
+    background-color: black;
+    color: white;
+    border-radius: 0.6em;
+    padding: 0.6em;
+    margin: 0.5em;
+    max-width: 5em;
+}
+
+.postEditBtns button:hover {
+  border: none;
+    background-color: black;
+    color: #FFD60A;
+    border-radius: 0.6em;
+    padding: 0.6em;
+    margin: 0.5em;
+    max-width: 5em;
+}
+
+.commentsContainer {
+  display: block;
+  justify-content: flex-start;
+}
+
+.commentBtns {
+  display: flex;
+  flex-direction: row;
+}
+
+.commentBtns button {
+  border: none;
+    background-color: black;
+    color: white;
+    border-radius: 0.6em;
+    padding: 0.6em;
+    margin: 0.5em;
+    max-width: 10em;
+}
+
+.commentBtns button:hover {
+  border: none;
+    background-color: black;
+    color: #FFD60A;
+    border-radius: 0.6em;
+    padding: 0.6em;
+    margin: 0.5em;
+    max-width: 10em;
+}

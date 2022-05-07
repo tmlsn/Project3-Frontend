@@ -216,18 +216,19 @@ export function AuthContextProvider({children}) {
   }  */
 
   const editPost = async (title, content, id) => {
+    console.log('uuuuuuuuuuuuuuuuuuuuu', content)
     const response = await client.put(`/post/edit-post/${id}`, {
       title,
       content,
     });
     allPosts()
+    
   }
 
   const getOnePost = async (id) => {
     try {
       const response = await client.get(`/post/${id}`)
       setPost(response.data) 
-      console.log('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv', response.data, id)
     } catch (error) {
       console.log(error)
     }
@@ -262,9 +263,9 @@ export function AuthContextProvider({children}) {
 
   const deleteComment = async (comment) => {
     try {
+      const postId = comment.post 
       const response = await client.delete(`/comment/delete-comment/${comment._id}`)
-      console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', comment.post)
-      seeComments(comment.post)
+      seeComments(postId)
     } catch (error) {
       console.log(error)
     }

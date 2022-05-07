@@ -1,0 +1,67 @@
+.addPostContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.addPostContainer form{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+    min-width: 45%;
+    max-width: 45%;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+}
+
+.addPostContainer input {
+    margin: 0.6em;
+    padding: 0.5em;
+    border-radius: 0.6em ;
+    background-color: #a7a7a7ff;
+  }
+  
+  .addPostContainer textarea {
+    margin: 0.6em;
+    padding: 0.5em;
+    border-radius: 0.6em ;
+    resize: none;
+    min-height: 5em;
+    background-color: #a7a7a7ff;
+  }
+
+.addPostContainer button {
+    border: none ;
+      background-color: black;
+      color: white;
+      border-radius: 0.6em;
+      padding: 0.6em;
+      margin: 0.5em;
+      max-width: 5em;
+  }
+  
+  .addPostContainer button:hover {
+    border: none;
+      background-color: black;
+      color: #FFD60A;
+      border-radius: 0.6em;
+      padding: 0.6em;
+      margin: 0.5em;
+      max-width: 5em;
+  }
+
+  .addPostContainer {
+    color: #a7a7a7ff;
+    
+  }
+
+  .addPostContainer h2 {
+      color: #FFD60A;
+      display: flex;
+      justify-content: center;
+  }
+
+  .createBtn {
+      display: flex;
+      justify-content: center;
+  }

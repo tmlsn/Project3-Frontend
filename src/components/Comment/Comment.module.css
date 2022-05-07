@@ -1,0 +1,55 @@
+
+
+.commentContainer {
+    display: flex;
+    flex-direction: column;
+    
+    background-color: rgba(98, 98, 98, 0.8);
+    min-width: 200%;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+}
+
+.commentHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ediBtns {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.commentHeader button {
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 0.6em;
+    padding: 0.5em;
+    margin: 0.2em;
+    max-width: 5em;
+}
+
+.commentHeader button:hover {
+    border: none;
+    background-color: black;
+    color: #FFD60A;
+    border-radius: 0.6em;
+    padding: 0.5em;
+    margin: 0.2em;
+    max-width: 5em;
+}
+  
+.commentContainer p {
+    color: rgb(0, 0, 0);
+    font-size: 1.1em;
+}
+.commentContainer span {
+    display: flex;
+    justify-content: flex-end;
+    color: #a7a7a7ff;
+    font-size: 0.8em;
+}
