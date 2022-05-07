@@ -27,7 +27,7 @@ export function AddComment(post) {
         {!commenting ? (
             <button onClick={handleCommenting} >Add a comment</button> 
         ):(
-            <form>
+            <form className={styles.form}>
                 <input
                 className={styles.commentInput}
                 id="content"
@@ -37,8 +37,10 @@ export function AddComment(post) {
                 setContent(e.target.value);
               }}
                 />
-                <button onClick={handleSubmit}>Comment</button>
-                <button onClick={handleCommenting}>Close</button>
+                <div className={styles.buttonsContainer}>
+                    <button onClick={handleSubmit}>Comment</button>
+                    <button onClick={handleCommenting}>Close</button>
+                </div>
             </form>
         )}
         </div>

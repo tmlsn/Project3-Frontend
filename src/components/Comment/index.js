@@ -46,24 +46,24 @@ export function Comment(comment) {
         <div className={styles.comments}>
         {!editing ? (
             <div className={styles.commentContainer}>
-            <div className={styles.commentHeader}>
-            <h2>{comment.user.firstName}</h2>
-            <div className={styles.editBtns}>
-            {user._id === comment.user._id ? (
-                <div>
-                <button onClick={handleOptions}>...</button>
+                <div className={styles.commentHeader}>
+                    <h2>{comment.user.firstName}</h2>
+                    <div className={styles.editBtns}>
+                    {user._id === comment.user._id ? (
+                        <div>
+                        <button onClick={handleOptions}>...</button>
+                        </div>
+                    ):(null)}
+                    {options ? ( 
+                            <div className={styles.buttonsContainer}>
+                            <button onClick={handleEditing}>Edit</button>
+                            <button onClick={handleDelete}>Delete</button>
+                            </div>
+                        ):(null)}
                 </div>
-            ):(null)}
-            {options ? ( 
-                    <div>
-                    <button onClick={handleEditing}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button>
                     </div>
-                ):(null)}
-                </div>
-                </div>
-            <p>{content}</p>
-            <span>{comment.createdAt}</span>
+                <p>{content}</p>
+                <span>{comment.createdAt}</span>
             </div>
         ):(
             <div>

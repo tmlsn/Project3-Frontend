@@ -23,7 +23,6 @@ export function Post(post) {
     },[post])
 
     const handleDelete = () => {
-        console.log('ccccccccccccccccccccccccc',post.user, user._id)
         if(post.user === user._id){
             deletePost(post._id)
             navigate("/")
@@ -46,7 +45,6 @@ export function Post(post) {
     }
 
     const handleSave = () => {
-        console.log('ppppppppppppppppppppppppppppppp',post.user, user._id)
         if(post.user === user._id){
             editPost(title, content, post._id)
             handleEditing();
@@ -63,8 +61,6 @@ export function Post(post) {
         getOnePost(post._id)
     }
      
-    
-
      /* const handleLike = (post) => {
          console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', user._id)
         if(post.likes.includes(user._id)){
