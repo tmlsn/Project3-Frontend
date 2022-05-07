@@ -15,15 +15,16 @@ export function Home() {
           <Link to='/venues' className={styles.avLink}>See venues</Link>
         </div>
       </div>}
-      <div className={styles.concertsContainer}>
-        <Concerts />
-      </div>
       <div className={styles.addPostContainer}>
         <AddPost />
       </div>
       <div className={styles.allPostsContainer}> 
         <AllPosts/>
       </div>
+      <div className={styles.concertsContainer}>
+        <Concerts />
+      </div>
+      
     </div>
   </div>
 }
